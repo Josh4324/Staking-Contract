@@ -1,15 +1,12 @@
-# Basic Sample Hardhat Project
+# Staking Contract
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+UI Link - <br>
+Testnet Address - https://rinkeby.etherscan.io/address/0x02fC12133850BCCFBC46394b75B62003ccee401b
 
-Try running some of the following tasks:
+```
+Input the following links in your GitHub's repository readme.md file.
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
+Hosted UI link (e.g netlify, heroku e.t.c)
+Testnet address showing link to their  verified smart contract
+Submit the link to the GitHub repository containing the readme.md and your code.
 ```
