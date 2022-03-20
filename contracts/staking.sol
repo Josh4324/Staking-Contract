@@ -119,6 +119,10 @@ contract JToken is Ownable {
         emit Stake(msg.sender, _stake);
     }
 
+    function getTokenStacked(address _address) public view returns (uint256) {
+        return stakes[_address];
+    }
+
     function addStakeholder(address _stakeholder) public {
         (bool _isStakeholder, ) = isStakeholder(_stakeholder);
         if (!_isStakeholder) stakeholders.push(_stakeholder);
@@ -136,20 +140,11 @@ contract JToken is Ownable {
     }
 
     function claimReward() public {
-        if (
-            block.timestamp > rewardTimeTracker[msg.sender] + 6 days &&
-            block.timestamp < rewardTimeTracker[msg.sender]
-        ) {
+        if (block.timestamp >= rewardTimeTracker[msg.sender] + 7 days) {
             uint256 reward = (stakes[msg.sender] * 1) / 100;
             balanceOf[msg.sender] += reward;
             rewardTimeTracker[msg.sender] = block.timestamp;
             emit Reward(msg.sender, reward);
-        } else if (block.timestamp > rewardTimeTracker[msg.sender] + 7 days) {
-            rewardTimeTracker[msg.sender] = block.timestamp;
         }
-    }
-
-    function getTokenStacked(address _address) public view returns (uint256) {
-        return stakes[_address];
     }
 }
