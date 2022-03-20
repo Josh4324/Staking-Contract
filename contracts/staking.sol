@@ -37,7 +37,7 @@ contract JToken is Ownable {
     event Buy(address indexed addr, bool value);
     event ChangePrice(uint256 value);
     event Stake(address addr, uint256 stake);
-    event Reward(address addr, uint256 reward);
+    event Reward(address addr, uint256 reward, bool value);
 
     function transfer(address to, uint256 amount) external returns (bool) {
         _transfer(to, amount);
@@ -144,7 +144,9 @@ contract JToken is Ownable {
             uint256 reward = (stakes[msg.sender] * 1) / 100;
             balanceOf[msg.sender] += reward;
             rewardTimeTracker[msg.sender] = block.timestamp;
-            emit Reward(msg.sender, reward);
+            emit Reward(msg.sender, reward, true);
+        } else {
+            emit Reward(msg.sender, 0, false);
         }
     }
 }
